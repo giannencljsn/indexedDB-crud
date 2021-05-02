@@ -24,7 +24,7 @@ const populateDB = () => {
                 // in case not able to fetch data
                 .catch(() => db.insert({
                     name: "Aamir khan",
-                    email: "aamir@diagnal.com",
+                    email: "aamir@example.com",
                     gender: 'male',
                     phone: '9696969696'
 
