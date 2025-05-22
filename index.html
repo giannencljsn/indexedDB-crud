@@ -13,23 +13,48 @@
 </head>
 
 <body>
+    <!-- <script>
+        window.addEventListener("load", (event) => {
+            const statusDisplay = document.getElementById("status");
+            statusDisplay.textContent = navigator.onLine ? "Online" : "Offline";
+        });
+
+        window.addEventListener("offline", (event) => {
+            const statusDisplay = document.getElementById("status");
+            statusDisplay.textContent = "Offline";
+        });
+
+        window.addEventListener("online", (event) => {
+            const statusDisplay = document.getElementById("status");
+            statusDisplay.textContent = "Online";
+        })
+    </script> -->
+
+    <div id="status"></div>
+
+    <script>
+        const checkOnlineStatus = async () => {
+            // Web request to check if browser is online and error handling if it fails
+            try {
+                // Use a more reliable endpoint or create your own 1pixel.png file
+                const online = await fetch("https://httpbin.org/status/200", {
+                    method: 'HEAD',
+                    mode: 'no-cors'
+                });
+                return true; // If fetch doesn't throw, we're online
+            } catch (err) {
+                return false; // definitely offline
+            }
+        }
+
+        // Move setInterval outside the function
+        setInterval(async () => {
+            const result = await checkOnlineStatus();
+            const statusDisplay = document.getElementById("status");
+            statusDisplay.textContent = result ? "Online" : "Offline";
+        }, 3000);
+    </script>
     <script type="module">
-        // Check you are online or not
-if (navigator.onLine) {
-  console.log("online");
-} else {
-  console.log("offline");
-}
-
-// To see changes in the network state, use addEventListener
-window.addEventListener("offline", (e) => {
-  console.log("offline");
-});
-
-window.addEventListener("online", (e) => {
-  console.log("online");
-});
-
         import init from './index.js';
         window.onload = init;
     </script>
