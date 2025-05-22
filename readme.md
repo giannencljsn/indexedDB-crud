@@ -10,3 +10,6 @@ https://user-images.githubusercontent.com/8420386/116812323-e6fb2080-ab6b-11eb-8
 [TODO] Add images support
 [TODO] switch to web components
 [TODO] switch to web workers
+
+
+<!-- FROM GIANNE REPO -->
